@@ -1,37 +1,49 @@
-## Welcome to GitHub Pages
+# Welcome to LB Calculator
 
-You can use the [editor on GitHub](https://github.com/LingBlackSama/LBCalculator.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+A small calculator project which made by LingBlack.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### The advantage of LB Calculator
+* Calculate quadratic equation in standard form easily
+* Free and open source
 
-### Markdown
+### The disadvantage of LB Calculator
+* The codes have lots of areas that need to improve
+* Only support quadratic equation in standard form only
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+# API
 
-```markdown
-Syntax highlighted code block
+### `LBCalculator.Quad({a, b, c, NumberType, Return})`
+Formula: `ax^2 + bx + c`
+`a` is the leading coefficient of the quadratic equation.
 
-# Header 1
-## Header 2
-### Header 3
+`b` is the second coefficient of the quadratic equation.
 
-- Bulleted
-- List
+`c` is the third coefficient of the quadratic equation and the y-intercept of the parabola.
 
-1. Numbered
-2. List
+`NumberType` has two types. They're `Normal` and `Fraction`. `Normal` number type will return the integer/decimal as a result of the quadratic equation. `Fraction` number type will return the fraction as a result of the quadratic equation.
 
-**Bold** and _Italic_ and `Code` text
+`Return` is the result that you want the function to pass. Currently, there've three types of `Return` in this module. Those're `x`, `y` and `Vertex`. Literally, `x` refers to the x-intercept of the vertex. `y` refers to the y-intercept of the vertex. `Vertex` is just the `x` and `y`.
 
-[Link](url) and ![Image](src)
+### Example:
+```lua
+local RS = game:GetService("ReplicatedStorage")
+
+-- < Modules > --
+local LBCalculator = require(RS:FindFirstChild("LBCalculator"))
+
+-- < Variables < --
+local Test1, Test2 = LBCalculator.Quad({
+	a = 1, 
+	b = 2, 
+	c = 3,
+	NumberType = "Normal",
+	Return = "Vertex",
+})
+
+print(Test1, Test2)
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/LingBlackSama/LBCalculator.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+### Output:
+```lua
+-1  2
+```
